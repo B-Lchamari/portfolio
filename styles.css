@@ -1,0 +1,206 @@
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations that substitute framer-motion */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+/* Scroll Reveal Classes (Using Intersection Observer) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+/* Base Dark Mode Styles */
+html.dark body {
+  background-color: #0f172a; /* slate-900 */
+  color: #f8fafc; /* slate-50 */
+}
+
+html.dark section {
+  background-color: #0f172a;
+  border-color: #1e293b;
+}
+
+/* Backgrounds for Sections */
+html.dark section.bg-white,
+html.dark header,
+html.dark footer {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+html.dark section.bg-slate-50 {
+  background-color: #1e293b !important; /* Alternating section */
+  border-color: #334155 !important;
+}
+
+html.dark nav {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+  border-color: #1e293b !important;
+}
+
+/* High Contrast Typography */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark .text-slate-900,
+html.dark span.text-slate-900,
+html.dark div.text-slate-900 {
+  color: #f8fafc !important;
+}
+
+html.dark p.text-slate-700,
+html.dark .text-slate-700 {
+  color: #e2e8f0 !important; /* Highly visible slate-200 */
+}
+
+html.dark p.text-slate-600,
+html.dark .text-slate-600,
+html.dark ul.text-slate-600 {
+  color: #cbd5e1 !important; /* Highly visible slate-300 */
+}
+
+html.dark p.text-slate-500,
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.dark h1 span.text-sky-500,
+html.dark span.text-sky-500,
+html.dark i.text-sky-500 {
+  color: #38bdf8 !important; /* Bright sky-400 */
+}
+
+/* Cards & Interactive Elements */
+html.dark div.bg-white,
+html.dark div.bg-slate-50,
+html.dark article.bg-white,
+html.dark article {
+  background-color: #1e293b !important; /* Base cards to slate-800 */
+  border-color: #334155 !important;
+}
+
+/* Specific cards inside the alternating section should flip so they don't blend */
+html.dark section.bg-slate-50 div.bg-white,
+html.dark section.bg-slate-50 article {
+  background-color: #0f172a !important;
+}
+
+/* Adjust Shadow Opacity for Dark Mode */
+html.dark .shadow-sm,
+html.dark .shadow-xl {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.dark .border-slate-100,
+html.dark .border-slate-200 {
+  border-color: #334155 !important;
+}
+
+/* Form Styles */
+html.dark input,
+html.dark textarea {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Buttons that were slate-900 in light mode look better when inverted to white in dark mode */
+html.dark a.bg-slate-900,
+html.dark button.bg-slate-900 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+html.dark a.bg-slate-900 .text-white,
+html.dark button.bg-slate-900 .text-white,
+html.dark button.bg-slate-900 i {
+  color: #0f172a !important;
+}
+html.dark a.hover\:bg-slate-800:hover, 
+html.dark button.hover\:bg-slate-800:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* Ensure transitons are smooth for colors in dark mode toggling */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Toggle Button Icons */
+html:not(.dark) .icon-moon {
+  display: block;
+}
+html:not(.dark) .icon-sun {
+  display: none;
+}
+html.dark .icon-moon {
+  display: none;
+}
+html.dark .icon-sun {
+  display: block;
+}
+html.dark #theme-toggle {
+  color: #94a3b8 !important; /* text-slate-400 */
+}
+html.dark #theme-toggle:hover {
+  color: #ffffff !important;
+}
