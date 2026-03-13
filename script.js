@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   observeElements();
   initThemeToggle();
   initBackToTop();
+  initMobileMenu();
 });
 
 // Dark Mode Toggle Logic
@@ -84,5 +85,49 @@ const initBackToTop = () => {
       top: 0,
       behavior: 'smooth'
     });
+  });
+};
+
+// Mobile Menu Toggle Logic
+const initMobileMenu = () => {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = toggleBtn ? toggleBtn.querySelector('i') : null;
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  
+  if (!toggleBtn || !mobileMenu) return;
+
+  const toggleMenu = () => {
+    mobileMenu.classList.toggle('hidden');
+    
+    // Toggle icon between menu and x
+    if (mobileMenu.classList.contains('hidden')) {
+      menuIcon.setAttribute('data-lucide', 'menu');
+    } else {
+      menuIcon.setAttribute('data-lucide', 'x');
+    }
+    
+    // Re-initialize lucide icons so the new icon renders
+    lucide.createIcons();
+  };
+
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Close menu when a link is clicked
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuIcon.setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!mobileMenu.classList.contains('hidden') && !toggleBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+      mobileMenu.classList.add('hidden');
+      menuIcon.setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    }
   });
 };

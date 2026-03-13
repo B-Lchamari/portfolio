@@ -204,3 +204,15 @@ html.dark #theme-toggle {
 html.dark #theme-toggle:hover {
   color: #ffffff !important;
 }
+
+/* Mobile Menu Dark Mode Styling */
+html.dark #mobile-menu {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  border-color: #1e293b !important;
+}
+html.dark #mobile-menu a {
+  color: #f8fafc !important;
+}
+html.dark #mobile-menu a:hover {
+  color: #38bdf8 !important;
+}
