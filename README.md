@@ -1,4 +1,4 @@
-# Brian Chamari - Full-Stack Developer Portfolio
+# Brian Lchamari - Full-Stack Developer Portfolio
 
 Welcome to my personal portfolio repository! This project showcases my experience, skills, and featured work as a Full-Stack Developer specializing in high-performance Python/Django ecosystems and modern web platforms.
 
